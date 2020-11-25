@@ -6,12 +6,11 @@
 <div class="container">
 
     <div class="jumbotron  bg-light">
-        <h1 class="display-4">Hallo, Pendaftar</h1>
+        <h1 class="display-4">Input Data Simpanan</h1>
         <div class="d-flex">
             <div class="icon mr-2">
                 <i class="icofont-megaphone"></i>
             </div>
-            <p class="lead">Sebelum lanjut mendaftar harap dibaca terlebih dahulu Peraturan Koperasi Mitra Sarasa</p>
 
         </div>
 
@@ -82,15 +81,15 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">Formulir Pendaftaran</div>
+                <div class="card-header">Form Simpanan</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('registration.store') }}">
+                    <form method="POST" action="{{ route('simpanan.store') }}">
                         @csrf
 
                         <div class="form-group">
-                            <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" placeholder="Masukan Nama" name="nama" value="{{ old('nama') }}">
-                            @error('nama')
+                            <label for="member_id">Member Id</label>
+                            <input type="text" class="form-control" id="member_id" placeholder="Masukan Member Id" name="member_id" value="{{ old('member_id') }}">
+                            @error('member_id')
                             <div class="text-danger mt-2">
                                 {{ $message }}
                             </div>
@@ -98,16 +97,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" placeholder="Masukan Email" name="email" value="{{ old('email') }}">
-                            @error('email')
+                            <label for="nama_admin">Nama Admin</label>
+                            <input type="text" class="form-control" id="nama_admin" placeholder="Masukan Nama Admin" name="nama_admin" value="{{ old('nama_admin') }}">
+                            @error('nama_admin')
                             <div class="text-danger mt-2">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="jeniskelamin">JenisKelamin</label>
                             <select name="jeniskelamin" id="jeniskelamin" class="form-control" name="jeniskelamin" value="{{ old('jeniskelamin') }}">
                                 <Option disabled selected>Choose One</Option>
@@ -119,12 +118,12 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
-                            <label for="tempat">Tempat Lahir</label>
-                            <input type="text" class="form-control" id="tempat" placeholder="Masukan tempat lahir" name="tempat" value="{{ old('tempat') }}">
-                            @error('tempat')
+                            <label for="tempat">Nama Anggota</label>
+                            <input type="text" class="form-control" id="nama_anggota" placeholder="Masukan Nama Anggota" name="nama_anggota" value="{{ old('nama_anggota') }}">
+                            @error('nama_anggota')
                             <div class="text-danger mt-2">
                                 {{ $message }}
                             </div>
@@ -132,9 +131,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="lahir">Tanggal Lahir</label>
-                            <input type="text" class="form-control datepicker" id="lahir" name="lahir" value="{{ old('lahir') }}">
-                            @error('lahir')
+                            <label for="tanggal_simpanan">Tanggal Simpanan</label>
+                            <input type="text" class="form-control datepicker" id="tanggal_simpanan" name="tanggal_simpanan" value="{{ old('tanggal_simpanan') }}">
+                            @error('tanggal_simpanan')
                             <div class="text-danger mt-2">
                                 {{ $message }}
                             </div>
@@ -142,39 +141,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="pekerjaan">Pekerjaan</label>
-                            <input type="text" class="form-control" id="pekerjaan" placeholder="Masukan pekerjaan" name="pekerjaan" value="{{ old('pekerjaan') }}">
-                            @error('pekerjaan')
+                            <label for="jumlah_simpanan">Jumlah Simpanan</label>
+                            <input type="text" class="form-control" id="jumlah_simpanan" placeholder="Masukan Jumlah Simpanan" name="jumlah_simpanan" value="{{ old('jumlah_simpanan') }}">
+                            @error('jumlah_simpanan')
                             <div class="text-danger mt-2">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
-
-                        <div class="form-group">
-                            <label for="notelp">No. Whatsapp</label>
-                            <input type="text" class="form-control" id="notelp" placeholder="+6289XXXXXX" name="notelp" value="{{ old('notelp') }}">
-                            @error('notelp')
-                            <div class="text-danger mt-2">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <textarea name="alamat" rows="10" class="d-blok w-100 form-control" id="alamat" name="alamat" value="{{ old('alamat') }}"></textarea>
-                            @error('alamat')
-                            <div class="text-danger mt-2">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-
-
-                        <input type="hidden" name="status" value="calon anggota">
-
 
 
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">

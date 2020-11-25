@@ -25,7 +25,7 @@ class MemberRequest extends FormRequest
     {
         return [
             //
-            
+
             'nama' => "required|max:255",
             'email' => "email:rfc,dns",
             'jeniskelamin' => "required|in:laki-laki,perempuan",
@@ -33,7 +33,8 @@ class MemberRequest extends FormRequest
             'lahir' => "date",
             'pekerjaan' => "required|max:255",
             'notelp' => "required|integer",
-            'alamat' => "required|max:255"
+            'alamat' => "required|max:255",
+            'status' => "required|max:255"
         ];
     }
 }

@@ -19,19 +19,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('admin')
     ->namespace('Admin')
-    ->group(function()
-    {
-       
+    ->group(function () {
+
 
         Route::resource('member', 'MemberController');
-
-
-
     });
-    Route::resource('registration', 'RegistrationController');
-    Route::get('/registration/create/success', 'RegistrationController@success')->name('registration.success');
+Route::resource('registration', 'RegistrationController');
+Route::resource('simpanan', 'SimpananController');
+Route::get('/registration/create/success', 'RegistrationController@success')->name('registration.success');
+Route::get('/home/simpanan/success', 'SimpananController@success')->name('simpanan.success');

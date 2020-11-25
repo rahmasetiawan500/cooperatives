@@ -14,7 +14,7 @@ class CreateMembersTable extends Migration
     public function up()
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->id()->unique();
+            $table->increments('id');
             $table->string('nama');
             $table->string('email')->unique();
             $table->enum('jeniskelamin', ['laki-laki', 'perempuan']);
@@ -23,6 +23,7 @@ class CreateMembersTable extends Migration
             $table->string('pekerjaan');
             $table->string('notelp');
             $table->text('alamat');
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });
