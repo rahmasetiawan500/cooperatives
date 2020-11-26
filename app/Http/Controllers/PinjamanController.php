@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pinjaman;
 use Illuminate\Http\Request;
 use App\Http\Requests\PinjamanRequest;
+use Illuminate\Support\Facades\DB;
 
 class PinjamanController extends Controller
 {
@@ -15,7 +16,8 @@ class PinjamanController extends Controller
      */
     public function index()
     {
-        //
+        $pinjaman = DB::table('pinjamen')->get();
+        return view('pages.admin.pinjaman.table', compact('pinjaman'));
     }
 
     /**
@@ -25,8 +27,9 @@ class PinjamanController extends Controller
      */
     public function create()
     {
-        //
-        return view('pages.admin.pinjaman.create');
+        $user = DB::table('users')->get();
+        $member = DB::table('members')->get();
+        return view('pages.admin.pinjaman.create', compact('user', 'member'));
     }
 
     /**
@@ -37,9 +40,7 @@ class PinjamanController extends Controller
      */
     public function store(PinjamanRequest $request)
     {
-        //
         Pinjaman::create($request->all());
-        
         return redirect()->route('pinjaman.success');
         // return redirect()->route('pinjaman.success');
     }
@@ -50,10 +51,14 @@ class PinjamanController extends Controller
      * @param  \App\Pinjaman  $pinjaman
      * @return \Illuminate\Http\Response
      */
+
+    public function success()
+    {
+        return view('pages.admin.pinjaman.success');
+    }
     public function show(Pinjaman $pinjaman)
     {
-        //
-        return view('pages.admin.pinjaman.success');
+        return view('pages.admin.pinjaman.show', compact('pinjaman'));
     }
 
     /**
