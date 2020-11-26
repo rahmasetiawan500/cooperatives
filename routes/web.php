@@ -29,8 +29,5 @@ Route::prefix('admin')
     });
 Route::resource('registration', 'RegistrationController');
 Route::resource('simpanan', 'SimpananController');
-Route::resource('pinjam', 'pinjamController');
 Route::get('/registration/create/success', 'RegistrationController@success')->name('registration.success');
 Route::get('/home/simpanan/success', 'SimpananController@success')->name('simpanan.success');
-Route::get('/pinjam', 'pinjamController@index');
-Route::get('/home/pinjam/success', 'pinjamController@success')->name('pinjam.success');
