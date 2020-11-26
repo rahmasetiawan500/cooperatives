@@ -20,9 +20,11 @@
                         <p> Pekerjaan             :  {{ $member->pekerjaan }}</p>
                         <p> No.Telp/Whatsup       :  {{ $member->notelp }}</p>
                         <p> Alamat                :  {{ $member->alamat }}</p>
+                        <p> Status                :  {{ $member->status }}</p>
                     </div>
                     <div>
-                        <a href="#" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('member.edit', $member->id) }}" class="btn btn-primary">Edit</a>
+
                         <form action="#" method="POST" class="d-inline">
                         @method('delete')
                         @csrf

@@ -12,6 +12,9 @@
     <title>@yield('title')</title>
 
     @include('includes.admin.style')
+    @stack('prepend-style')
+    @include('includes.style')
+    @stack('addon-style')
 
 </head>
 
@@ -74,5 +77,7 @@
     </div>
 
     @include('includes.admin.script')
-
+    @stack('prepend-script')
+    @include('includes.script')
+    @stack('addon-script')
 </body>

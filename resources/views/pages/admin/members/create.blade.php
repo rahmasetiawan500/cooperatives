@@ -228,7 +228,7 @@
         format: 'yyyy-mm-dd',
         uilibrary: 'bootstrap4',
         icons: {
-            rightIcon: '<img src="{{ url("sarasa/assets/img/ic_doe.png") }}"/>'
+            rightIcon: '<img src="{{ url("frontend/images/ic_doe.png") }}"/>'
         }
     });
 </script>

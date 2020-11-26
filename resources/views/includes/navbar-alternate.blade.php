@@ -3,7 +3,7 @@
   <nav class="row navbar navbar-expand-lg navbar-light bg-light">
     <div class="navbar-nav ml-auto mr-auto mr-sm-auto mr-lg-0 mr-md-auto">
         <a href="{{ route('home') }}" class="navbar-brand">
-            <img src="{{ url('sarasa/assets/img/logohero.png') }}" alt="" width="40px">
+            <img src="{{ url('frontend/images/koperasi.png') }}" alt="" width="40px">
         </a>
     </div>
     <ul class="navbar-nav mr-auto d-none d-lg-block">

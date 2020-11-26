@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Member;
+use App\Pinjaman;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\MemberRequest;
+use App\Http\Requests\PinjamanRequest;
 
-class MemberController extends Controller
+class PinjamanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,6 @@ class MemberController extends Controller
     public function index()
     {
         //
-        $members = Member::latest()->paginate(5);
-        return view('pages.admin.members.index', compact('members'));
     }
 
     /**
@@ -29,7 +26,7 @@ class MemberController extends Controller
     public function create()
     {
         //
-       
+        return view('pages.admin.pinjaman.create');
     }
 
     /**
@@ -38,73 +35,58 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MemberRequest $request)
+    public function store(PinjamanRequest $request)
     {
-        // return $request;
-
-  
+        //
+        Pinjaman::create($request->all());
+        
+        return redirect()->route('pinjaman.success');
+        // return redirect()->route('pinjaman.success');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pinjaman  $pinjaman
      * @return \Illuminate\Http\Response
      */
-    public function show(Member $member)
+    public function show(Pinjaman $pinjaman)
     {
         //
-        return view('pages.admin.members.show', compact('member'));
+        return view('pages.admin.pinjaman.success');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pinjaman  $pinjaman
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pinjaman $pinjaman)
     {
         //
-     
-
-        $member = Member::findOrFail($id);
-
-        return view('pages.admin.members.edit',[
-            'member' => $member
-        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Pinjaman  $pinjaman
      * @return \Illuminate\Http\Response
      */
-    public function update(MemberRequest $request,$id)
+    public function update(Request $request, Pinjaman $pinjaman)
     {
         //
-       
-        $data = $request->all();
-        $member = Member::findOrFail($id);
-        
-        $member->update($data);
-
-        return redirect()->route('member.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Pinjaman  $pinjaman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Member $member)
+    public function destroy(Pinjaman $pinjaman)
     {
         //
-
-        $member->delete();
-        return redirect()->route('member.index');
     }
 }
