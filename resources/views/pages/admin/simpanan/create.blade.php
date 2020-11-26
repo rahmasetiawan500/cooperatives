@@ -4,10 +4,10 @@
 @section('content')
 
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4 ml-4">
-        <h1 class="h3 mb-0 text-gray-800">Input Simpanan Anggota</h1>
-    </div>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4 ml-4">
+    <h1 class="h3 mb-0 text-gray-800">Input Simpanan Anggota</h1>
+</div>
 
 
 <div class="container ">
@@ -20,6 +20,28 @@
                         @csrf
 
                         <div class="form-group">
+                            <label for="exampleFormControlSelect1">Pilih Id Anggota</label>
+                            <select class="form-control" id="exampleFormControlSelect1" id="member_id" name="member_id" value="{{ old('member_id') }}">
+                                @forelse ($member as $m)
+                                <option>{{ $m->id }}</option>
+                                @empty
+                                <option>tidak ada member id</option>
+                                @endforelse
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Pilih Nama Anggota</label>
+                            <select class="form-control" id="exampleFormControlSelect1" id="nama_anggota" name="nama_anggota" value="{{ old('nama_anggota') }}">
+                                @forelse ($member as $m)
+                                <option>{{ $m->nama }}</option>
+                                @empty
+                                <option>tidak ada member</option>
+                                @endforelse
+                            </select>
+                        </div>
+
+                        <!-- <div class="form-group">
                             <label for="member_id">Member Id</label>
                             <input type="text" class="form-control" id="member_id" placeholder="Masukan Member Id" name="member_id" value="{{ old('member_id') }}">
                             @error('member_id')
@@ -27,9 +49,19 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
+                            <label for="exampleFormControlSelect1">Pilih Nama Admin</label>
+                            <select class="form-control" id="exampleFormControlSelect1" id="nama_admin" name="nama_admin" value="{{ old('nama_admin') }}">
+                                @forelse ($user as $s)
+                                <option>{{ $s->name }}</option>
+                                @empty
+                                <option>tidak ada admin</option>
+                                @endforelse
+                            </select>
+                        </div>
+                        <!-- <div class="form-group">
                             <label for="nama_admin">Nama Admin</label>
                             <input type="text" class="form-control" id="nama_admin" placeholder="Masukan Nama Admin" name="nama_admin" value="{{ old('nama_admin') }}">
                             @error('nama_admin')
@@ -37,10 +69,10 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                        </div>
+                        </div> -->
 
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="tempat">Nama Anggota</label>
                             <input type="text" class="form-control" id="nama_anggota" placeholder="Masukan Nama Anggota" name="nama_anggota" value="{{ old('nama_anggota') }}">
                             @error('nama_anggota')
@@ -48,7 +80,7 @@
                                 {{ $message }}
                             </div>
                             @enderror
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <label for="tanggal_simpanan">Tanggal Simpanan</label>
@@ -71,7 +103,7 @@
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary" >
+                        <button type="submit" class="btn btn-primary">
                             Simpan Data
                         </button>
 

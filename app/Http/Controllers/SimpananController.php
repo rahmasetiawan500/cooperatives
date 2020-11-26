@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Simpanan;
 use Illuminate\Http\Request;
 use App\Http\Requests\SimpananRequest;
+use Illuminate\Support\Facades\DB;
 
 class SimpananController extends Controller
 {
@@ -15,7 +16,8 @@ class SimpananController extends Controller
      */
     public function index()
     {
-        //
+        $simpanan = DB::table('simpanans')->get();
+        return view('pages.admin.simpanan.table', compact('simpanan'));
     }
 
     /**
@@ -25,7 +27,9 @@ class SimpananController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.simpanan.create');
+        $user = DB::table('users')->get();
+        $member = DB::table('members')->get();
+        return view('pages.admin.simpanan.create', compact('user', 'member'));
     }
 
     /**
@@ -52,7 +56,8 @@ class SimpananController extends Controller
     }
     public function show(Simpanan $simpanan)
     {
-        //
+        $fullsimpanan = DB::table('simpanans')->get();
+        return view('pages.admin.simpanan.show', compact('simpanan', 'fullsimpanan'));
     }
 
     /**
@@ -86,6 +91,7 @@ class SimpananController extends Controller
      */
     public function destroy(Simpanan $simpanan)
     {
-        //
+        $simpanan->delete();
+        return redirect()->route('simpanan.table');
     }
 }
